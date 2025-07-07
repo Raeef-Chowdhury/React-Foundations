@@ -1,5 +1,5 @@
 import "./App.css";
-
+import { motion } from "motion/react";
 function App() {
   return (
     <>
@@ -16,7 +16,12 @@ function HeroSection() {
       <Navbar />
       <section className="section__hero mt-[9.6rem] h-[70vh] ">
         <div className="hero__textbox flex justify-start items-center flex-col gap-[6.4rem]">
-          <h1 className="hero__heading text-[9.6rem]  font-bold bg-gradient-to-r from-[#b6f77a] to-[#057d39] bg-clip-text text-transparent tracking-tight">
+          <motion.h1
+            initial={{ x: -1600, blur: ["5px"], opacity: 0 }}
+            animate={{ x: 0, blur: ["0px"], opacity: 1 }}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            className="hero__heading text-[9.6rem]  font-bold bg-gradient-to-r from-[#b6f77a] to-[#057d39] bg-clip-text text-transparent tracking-tight"
+          >
             Good
             <span className="text-[#2563eb]">{" {"}</span>
             {hour >= 12 && hour <= 17
@@ -26,16 +31,26 @@ function HeroSection() {
               : "Morning"}
             <span className="text-[#2563eb]">{"} "}</span>
             Viewer!
-          </h1>
-          <p className="hero__info text-[#d6f8df] text-[2.4rem] max-w-[60vw] tracking-[0.3rem]">
+          </motion.h1>
+          <motion.p
+            initial={{ x: 1600, blur: ["5px"], opacity: 0 }}
+            animate={{ x: 0, blur: ["0px"], opacity: 1 }}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            className="hero__info text-[#d6f8df] text-[2.4rem] max-w-[60vw] tracking-[0.3rem]"
+          >
             {" "}
             This is a simple app of basic projects that will help me solidify my
             basics. Above was the first project, a conditional statment changing
             depending on the time of day.
-          </p>
-          <button className="hero__button text-[2.4rem] px-[2.4em] py-[0.6em] rounded-4xl text-[#2563eb] bg-[#d6f8df] transition-all hover:scale-125 hover:translate-y-[-2rem] hover:cursor-pointer overflow-hidden relative">
+          </motion.p>
+          <motion.button
+            initial={{ scale: 0, blur: ["5px"], opacity: 0 }}
+            animate={{ scale: 1, blur: ["0px"], opacity: 1 }}
+            transition={{ type: "tween", duration: 0.8, ease: "easeIn" }}
+            className="hero__button text-[2.4rem] px-[2.4em] py-[0.6em] rounded-4xl text-[#2563eb] bg-[#d6f8df] transition-all hover:scale-125 hover:translate-y-[-2rem] hover:cursor-pointer overflow-hidden relative"
+          >
             SEE MORE
-          </button>
+          </motion.button>
         </div>
       </section>
     </>
@@ -47,15 +62,25 @@ function Navbar() {
     <>
       <nav className="navbar px-[3rem] py-[2.4rem]">
         <ul className="nav__list flex justify-between items-center">
-          <div className="nav__box--theme">
+          <motion.div
+            initial={{ y: -1600, blur: ["5px"], opacity: 0 }}
+            animate={{ y: 0, blur: ["0px"], opacity: 1 }}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            className="nav__box--theme"
+          >
             <li className="nav__item nav__item-light text-[4.8rem] text-[#08aa38] translate-y-[10%] ">
               <ion-icon name="moon"></ion-icon>
             </li>
             <li className="nav__item nav__item--dark none">
               <ion-icon name="sun"></ion-icon>
             </li>
-          </div>
-          <div className="react__navbar flex items-center gap-[1.2rem] justify-center">
+          </motion.div>
+          <motion.div
+            initial={{ y: -1600, blur: ["5px"], opacity: 0 }}
+            animate={{ y: 0, blur: ["0px"], opacity: 1 }}
+            transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
+            className="react__navbar flex items-center gap-[1.2rem] justify-center"
+          >
             <div className="text-[3.6rem] text-blue-500 self-center m-0 leading-none">
               <ion-icon name="logo-react"></ion-icon>
             </div>
@@ -63,7 +88,7 @@ function Navbar() {
             <p className="navbar__logo--text text-[3.6rem] text-[#86d039]  translate-y-[-10%] text-semibold self-center m-0 leading-none ">
               FOUNDATIONS
             </p>
-          </div>
+          </motion.div>
           <div className="nav__box--list flex gap-[3.6rem] justify-between items-center">
             <NavbarItem content="Toggling" />
             <NavbarItem content="Images" />
@@ -79,13 +104,16 @@ function Navbar() {
 function NavbarItem(props) {
   return (
     <>
-      <li
+      <motion.li
+        initial={{ y: -1600 }}
+        animate={{ y: 0 }}
+        transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
         className="nav__list--item text-[2.4rem] text-[#b3f975] text-semibold uppercase hover:scale-125 transition-all duration-500 hover:text-[#86d039] 
               hover:cursor-pointer
  "
       >
         {props.content}
-      </li>
+      </motion.li>
     </>
   );
 }
