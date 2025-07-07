@@ -9,10 +9,34 @@ function App() {
 }
 
 function HeroSection() {
+  const now = new Date();
+  const hour = now.getHours();
   return (
     <>
-      <section className="section__hero">
-        <Navbar />
+      <Navbar />
+      <section className="section__hero mt-[9.6rem] h-[70vh] ">
+        <div className="hero__textbox flex justify-start items-center flex-col gap-[6.4rem]">
+          <h1 className="hero__heading text-[9.6rem]  font-bold bg-gradient-to-r from-[#b6f77a] to-[#057d39] bg-clip-text text-transparent tracking-tight">
+            Good
+            <span className="text-[#2563eb]">{" {"}</span>
+            {hour >= 12 && hour <= 17
+              ? "Afternoon"
+              : hour >= 18
+              ? "Night"
+              : "Morning"}
+            <span className="text-[#2563eb]">{"} "}</span>
+            Viewer!
+          </h1>
+          <p className="hero__info text-[#d6f8df] text-[2.4rem] max-w-[60vw] tracking-[0.3rem]">
+            {" "}
+            This is a simple app of basic projects that will help me solidify my
+            basics. Above was the first project, a conditional statment changing
+            depending on the time of day.
+          </p>
+          <button className="hero__button text-[2.4rem] px-[2.4em] py-[0.6em] rounded-4xl text-[#2563eb] bg-[#d6f8df] transition-all hover:scale-125 hover:translate-y-[-2rem] hover:cursor-pointer overflow-hidden relative">
+            SEE MORE
+          </button>
+        </div>
       </section>
     </>
   );
@@ -24,7 +48,7 @@ function Navbar() {
       <nav className="navbar px-[3rem] py-[2.4rem]">
         <ul className="nav__list flex justify-between items-center">
           <div className="nav__box--theme">
-            <li className="nav__item nav__item-light text-[4.8rem] text-[#08aa38] translate-y-[10%]">
+            <li className="nav__item nav__item-light text-[4.8rem] text-[#08aa38] translate-y-[10%] ">
               <ion-icon name="moon"></ion-icon>
             </li>
             <li className="nav__item nav__item--dark none">
@@ -41,34 +65,10 @@ function Navbar() {
             </p>
           </div>
           <div className="nav__box--list flex gap-[3.6rem] justify-between items-center">
-            <li
-              className="nav__list--item text-[2.4rem] text-[#b3f975] text-semibold uppercase hover:scale-110 transition-all duration-500 hover:text-[#86d039] 
-              hover:cursor-pointer
- "
-            >
-              Toggling
-            </li>
-            <li
-              className="nav__list--item text-[2.4rem] text-[#b3f975] text-semibold uppercase hover:scale-110 transition-all duration-500 hover:text-[#86d039] 
-              hover:cursor-pointer
-"
-            >
-              Images
-            </li>
-            <li
-              className="nav__list--item text-[2.4rem] text-[#b3f975] text-semibold uppercase hover:scale-110 transition-all duration-500 hover:text-[#86d039] 
-              hover:cursor-pointer
-"
-            >
-              Typing
-            </li>
-            <li
-              className="nav__list--item text-[2.4rem] text-[#b3f975] text-semibold uppercase hover:scale-110 transition-all duration-500 hover:text-[#86d039] 
-              hover:cursor-pointer
- "
-            >
-              Review
-            </li>
+            <NavbarItem content="Toggling" />
+            <NavbarItem content="Images" />
+            <NavbarItem content="Typing" />
+            <NavbarItem content="Review" />
           </div>
         </ul>
       </nav>
@@ -76,4 +76,17 @@ function Navbar() {
   );
 }
 
+function NavbarItem(props) {
+  return (
+    <>
+      <li
+        className="nav__list--item text-[2.4rem] text-[#b3f975] text-semibold uppercase hover:scale-125 transition-all duration-500 hover:text-[#86d039] 
+              hover:cursor-pointer
+ "
+      >
+        {props.content}
+      </li>
+    </>
+  );
+}
 export default App;
