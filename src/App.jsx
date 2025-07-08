@@ -1,9 +1,31 @@
 import "./App.css";
 import { motion } from "motion/react";
+const imageData = [
+  {
+    name: "React Foundations",
+    explaination: "An app to learn the basics of React",
+    photoName: "Screenshot-1.png",
+    i: 0,
+  },
+  {
+    name: "Portfolio",
+    explaination: "My main portfolio website",
+    photoName: "Screenshot-2.png",
+    i: 1,
+  },
+  {
+    name: "Mother + Son Dining",
+    explaination:
+      "My first landing page, made to learn the basics of HTML and CSS",
+    photoName: "Screenshot-3.png",
+    i: 2,
+  },
+];
 function App() {
   return (
     <>
       <HeroSection />
+      <ImageSection />
     </>
   );
 }
@@ -114,6 +136,46 @@ function NavbarItem(props) {
       >
         {props.content}
       </motion.li>
+    </>
+  );
+}
+function ImageSection() {
+  return (
+    <>
+      <section className="section__image mt-[9.6rem] h-[70vh] flex flex-col items-center  ">
+        <HeroHeading content="IMAGE CAROUSEL"></HeroHeading>
+        <ul className="image__carousel--list mt-[9.6rem]  flex flex-col items-center ">
+          {imageData.map((image) => {
+            console.log(image);
+
+            return (
+              <Image key={image.photoName} ImageInfo={image} index={image.i} />
+            );
+          })}
+        </ul>
+      </section>
+    </>
+  );
+}
+function Image({ ImageInfo, index }) {
+  return (
+    <>
+      {console.log(index)}
+      <li
+        className="image__carousel--item w-[70%] absolute h-[100%]"
+        style={{ transform: `translateX(${index * 100}vw)` }}
+      >
+        <img src={ImageInfo.photoName} />
+      </li>
+    </>
+  );
+}
+function HeroHeading(props) {
+  return (
+    <>
+      <h1 className="image__heading text-[7.2rem]  transition-all duration-500 hover:text-[#d6f8df] hover:bg-[#2563eb] hover:scale-110 hover:cursor-pointer tracking-tighter w-[50%] rounded-4xl text-[#2563eb] bg-[#d6f8df]">
+        {props.content}
+      </h1>
     </>
   );
 }
