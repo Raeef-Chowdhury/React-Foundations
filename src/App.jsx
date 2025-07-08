@@ -6,19 +6,22 @@ const imageData = [
     explaination: "An app to learn the basics of React",
     photoName: "Screenshot-1.png",
     i: 0,
+    skills: "https://skillicons.dev/icons?i=git,react,tailwind,vite",
   },
   {
     name: "Portfolio",
     explaination: "My main portfolio website",
-    photoName: "Screenshot-2.png",
+    photoName: "Screenshot-3.png",
     i: 1,
+    skills: "https://skillicons.dev/icons?i=html,css,git,javascript,tailwind",
   },
   {
     name: "Mother + Son Dining",
     explaination:
       "My first landing page, made to learn the basics of HTML and CSS",
-    photoName: "Screenshot-3.png",
+    photoName: "Screenshot-2.png",
     i: 2,
+    skills: "https://skillicons.dev/icons?i=html,css,git,javascript",
   },
 ];
 function App() {
@@ -142,7 +145,7 @@ function NavbarItem(props) {
 function ImageSection() {
   return (
     <>
-      <section className="section__image mt-[9.6rem] h-[70vh] flex flex-col items-center  ">
+      <section className="section__image mt-[9.6rem] h-[70vh] flex flex-col items-center mb-[28rem] ">
         <HeroHeading content="IMAGE CAROUSEL"></HeroHeading>
         <ul className="image__carousel--list mt-[9.6rem]  flex flex-col items-center ">
           {imageData.map((image) => {
@@ -162,10 +165,26 @@ function Image({ ImageInfo, index }) {
     <>
       {console.log(index)}
       <li
-        className="image__carousel--item w-[70%] absolute h-[100%]"
+        className="image__carousel--item w-[70%]  h-[70%] absolute overflow-hidden border-black border-8 mx-[1.2rem] group "
         style={{ transform: `translateX(${index * 100}vw)` }}
       >
-        <img src={ImageInfo.photoName} />
+        <img
+          src={ImageInfo.photoName}
+          className="group-hover:blur-xl group-hover:brightness-60 transition-all duration-500"
+        />
+        <div className="image__information flex flex-col items-center ">
+          <p className="project__heading text-[7.2rem] text-[#08aa38]  transition-all duration-500 group-hover:translate-y-[-40rem] uppercase group-hover:cursor-pointer">
+            {ImageInfo.name}
+          </p>
+          <p className="project__info text-[2.4rem] text-[#d6f8df]  transition-all duration-500 group-hover:translate-y-[-35rem]  group-hover:cursor-pointer">
+            {ImageInfo.explaination}
+          </p>
+          <ul className="project__skills">
+            <li className="project__skill text-[2.4rem] text-[#d6f8df]  transition-all duration-500 group-hover:translate-y-[-30rem]  group-hover:cursor-pointer">
+              <img src={ImageInfo.skills} alt="" className="skill__img" />
+            </li>
+          </ul>
+        </div>
       </li>
     </>
   );
@@ -173,7 +192,7 @@ function Image({ ImageInfo, index }) {
 function HeroHeading(props) {
   return (
     <>
-      <h1 className="image__heading text-[7.2rem]  transition-all duration-500 hover:text-[#d6f8df] hover:bg-[#2563eb] hover:scale-110 hover:cursor-pointer tracking-tighter w-[50%] rounded-4xl text-[#2563eb] bg-[#d6f8df]">
+      <h1 className="image__heading text-[7.2rem]  transition-all duration-500 hover:text-[#2563eb] = hover:scale-110 hover:cursor-pointer tracking-tighter w-[50%] rounded-4xl text-[#d6f8df] ">
         {props.content}
       </h1>
     </>
