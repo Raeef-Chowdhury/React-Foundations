@@ -192,9 +192,12 @@ function Image({ ImageInfo, index }) {
 function HeroHeading(props) {
   return (
     <>
-      <h1 className="image__heading text-[7.2rem]  transition-all duration-500 hover:text-[#2563eb] = hover:scale-110 hover:cursor-pointer tracking-tighter w-[50%] rounded-4xl text-[#d6f8df] ">
-        {props.content}
-      </h1>
+      <div className="group relative w-full flex items-center justify-center">
+        <h1 className="image__heading text-[7.2rem] transition-all duration-500 hover:text-[#2563eb] hover:scale-110 hover:cursor-pointer tracking-tighter w-[50%] rounded-4xl text-[#d6f8df]">
+          {props.content}
+        </h1>
+        <div className="absolute left-[30%] bottom-0 h-[0.4rem] w-[40%] bg-[#2563eb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+      </div>
     </>
   );
 }
