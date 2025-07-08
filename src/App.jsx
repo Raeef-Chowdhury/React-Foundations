@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./App.css";
 import { motion } from "motion/react";
 const imageData = [
@@ -145,7 +146,7 @@ function NavbarItem(props) {
 function ImageSection() {
   return (
     <>
-      <section className="section__image mt-[9.6rem] h-[70vh] flex flex-col items-center mb-[28rem] ">
+      <section className="section__image mt-[9.6rem]  ">
         <HeroHeading content="IMAGE CAROUSEL"></HeroHeading>
         <ul className="image__carousel--list mt-[9.6rem]  flex flex-col items-center ">
           {imageData.map((image) => {
@@ -156,6 +157,12 @@ function ImageSection() {
             );
           })}
         </ul>
+        <button className="slider__left absolute left-[5%] visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </button>
+        <button className="slider__right absolute left-[87%]  visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
       </section>
     </>
   );
