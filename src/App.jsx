@@ -1,19 +1,20 @@
 /* eslint-disable react/prop-types */
+import { useState, createRef } from "react";
 import "./App.css";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 const imageData = [
   {
     name: "React Foundations",
     explaination: "An app to learn the basics of React",
     photoName: "Screenshot-1.png",
-    i: 0,
+    i: -1,
     skills: "https://skillicons.dev/icons?i=git,react,tailwind,vite",
   },
   {
     name: "Portfolio",
     explaination: "My main portfolio website",
     photoName: "Screenshot-3.png",
-    i: 1,
+    i: 0,
     skills: "https://skillicons.dev/icons?i=html,css,git,javascript,tailwind",
   },
   {
@@ -21,7 +22,7 @@ const imageData = [
     explaination:
       "My first landing page, made to learn the basics of HTML and CSS",
     photoName: "Screenshot-2.png",
-    i: 2,
+    i: 1,
     skills: "https://skillicons.dev/icons?i=html,css,git,javascript",
   },
 ];
@@ -144,43 +145,70 @@ function NavbarItem(props) {
   );
 }
 function ImageSection() {
+  const ref = createRef();
+  const isInView = useInView(ref, { threshold: 1 });
+  const [imgIndex, setImgIndex] = useState(0);
   return (
     <>
-      <section className="section__image mt-[9.6rem]  ">
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0, y: 100 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        className="section__image mt-[9.6rem]  "
+      >
         <HeroHeading content="IMAGE CAROUSEL"></HeroHeading>
         <ul className="image__carousel--list mt-[9.6rem]  flex flex-col items-center ">
-          {imageData.map((image) => {
-            console.log(image);
-
+          {imageData.map((image, index) => {
             return (
-              <Image key={image.photoName} ImageInfo={image} index={image.i} />
+              <Image
+                key={image.photoName}
+                ImageInfo={image}
+                index={index}
+                imgIndex={imgIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
             );
           })}
         </ul>
-        <button className="slider__left absolute left-[5%] visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]">
+        <button
+          onClick={() =>
+            setImgIndex((imgIndex - 1 + imageData.length) % imageData.length)
+          }
+          className="slider__left absolute left-[5%] visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]"
+        >
           <ion-icon name="chevron-back-outline"></ion-icon>
         </button>
-        <button className="slider__right absolute left-[87%]  visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]">
+        <button
+          onClick={() =>
+            setImgIndex((imgIndex + 1 + imageData.length) % imageData.length)
+          }
+          className="slider__right absolute left-[87%]  visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]"
+        >
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </button>
-      </section>
+      </motion.section>
+      {console.log(imgIndex)}
     </>
   );
 }
-function Image({ ImageInfo, index }) {
+function Image({ ImageInfo, index, imgIndex }) {
   return (
     <>
-      {console.log(index)}
-      <li
+      <motion.li
+        initial={{ x: 100 }}
+        animate={{ x: (index - imgIndex) * 100 + "vw" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="image__carousel--item w-[70%]  h-[70%] absolute overflow-hidden border-black border-8 mx-[1.2rem] group "
-        style={{ transform: `translateX(${index * 100}vw)` }}
+        // style={{ transform: `translateX(${(index - imgIndex) * 100}vw)` }}
       >
         <img
           src={ImageInfo.photoName}
           className="group-hover:blur-xl group-hover:brightness-60 transition-all duration-500"
         />
         <div className="image__information flex flex-col items-center ">
-          <p className="project__heading text-[7.2rem] text-[#08aa38]  transition-all duration-500 group-hover:translate-y-[-40rem] uppercase group-hover:cursor-pointer">
+          <p className="project__heading text-[7.2rem] text-[#08aa38]   transition-all duration-500 group-hover:translate-y-[-40rem] uppercase group-hover:cursor-pointer">
             {ImageInfo.name}
           </p>
           <p className="project__info text-[2.4rem] text-[#d6f8df]  transition-all duration-500 group-hover:translate-y-[-35rem]  group-hover:cursor-pointer">
@@ -192,7 +220,7 @@ function Image({ ImageInfo, index }) {
             </li>
           </ul>
         </div>
-      </li>
+      </motion.li>
     </>
   );
 }
