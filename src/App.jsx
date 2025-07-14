@@ -31,6 +31,7 @@ function App() {
     <>
       <HeroSection />
       <ImageSection />
+      <CommerceSection />
     </>
   );
 }
@@ -95,7 +96,7 @@ function Navbar() {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             className="nav__box--theme"
           >
-            <li className="nav__item nav__item-light text-[4.8rem] text-[#08aa38] translate-y-[10%] ">
+            <li className="nav__item nav__item-light text-[4.8rem] dark:text-[#08aa38] text-[#c5164d] translate-y-[10%] ">
               <ion-icon name="moon"></ion-icon>
             </li>
             <li className="nav__item nav__item--dark none">
@@ -119,7 +120,7 @@ function Navbar() {
           <div className="nav__box--list flex gap-[3.6rem] justify-between items-center">
             <NavbarItem content="Toggling" />
             <NavbarItem content="Images" />
-            <NavbarItem content="Typing" />
+            <NavbarItem content="Commerce" />
             <NavbarItem content="Review" />
           </div>
         </ul>
@@ -154,10 +155,10 @@ function ImageSection() {
         ref={ref}
         initial={{ opacity: 0, y: 100 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-        className="section__image mt-[9.6rem]  "
+        className="section__image mt-[9.6rem] relative h-[80vh] "
       >
         <HeroHeading content="IMAGE CAROUSEL"></HeroHeading>
-        <ul className="image__carousel--list mt-[9.6rem]  flex flex-col items-center ">
+        <ul className="image__carousel--list mt-[9.6rem] relative h-[120%] flex flex-col items-center ">
           {imageData.map((image, index) => {
             return (
               <Image
@@ -176,7 +177,7 @@ function ImageSection() {
           onClick={() =>
             setImgIndex((imgIndex - 1 + imageData.length) % imageData.length)
           }
-          className="slider__left absolute left-[5%] visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]"
+          className="slider__left absolute left-[5%] top-[70%] visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]"
         >
           <ion-icon name="chevron-back-outline"></ion-icon>
         </button>
@@ -184,7 +185,7 @@ function ImageSection() {
           onClick={() =>
             setImgIndex((imgIndex + 1 + imageData.length) % imageData.length)
           }
-          className="slider__right absolute left-[87%]  visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]"
+          className="slider__right absolute left-[87%] top-[70%] visible bg-[#d6f8df] w-[80px] h-[80px] rounded-full aspect-ratio-1 bottom-[-85%] text-[#2563eb] text-[6rem]"
         >
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </button>
@@ -205,10 +206,10 @@ function Image({ ImageInfo, index, imgIndex }) {
       >
         <img
           src={ImageInfo.photoName}
-          className="group-hover:blur-xl group-hover:brightness-60 transition-all duration-500"
+          className="group-hover:blur-xl group-hover:brightness-60 transition-all duration-500 w-full h-full object-cover"
         />
         <div className="image__information flex flex-col items-center ">
-          <p className="project__heading text-[7.2rem] text-[#08aa38]   transition-all duration-500 group-hover:translate-y-[-40rem] uppercase group-hover:cursor-pointer">
+          <p className="project__heading text-[7.2rem] dark:text-[#08aa38]  text-[#c5164d] transition-all duration-500 group-hover:translate-y-[-40rem] uppercase group-hover:cursor-pointer">
             {ImageInfo.name}
           </p>
           <p className="project__info text-[2.4rem] text-[#d6f8df]  transition-all duration-500 group-hover:translate-y-[-35rem]  group-hover:cursor-pointer">
@@ -224,14 +225,23 @@ function Image({ ImageInfo, index, imgIndex }) {
     </>
   );
 }
+function CommerceSection() {
+  return (
+    <>
+      <section className="section__commerce mt-[24rem]">
+        <HeroHeading content="COMMERCE"></HeroHeading>
+      </section>
+    </>
+  );
+}
 function HeroHeading(props) {
   return (
     <>
-      <div className="group relative w-full flex items-center justify-center">
-        <h1 className="image__heading text-[7.2rem] transition-all duration-500 hover:text-[#2563eb] hover:scale-110 hover:cursor-pointer tracking-tighter w-[50%] rounded-4xl text-[#d6f8df]">
+      <div className="relative w-full text-center">
+        <h1 className="group inline-block text-[7.2rem] transition-all duration-500 hover:text-[#2563eb] hover:scale-110 hover:cursor-pointer tracking-tighter rounded-4xl text-[#d6f8df] relative">
           {props.content}
+          <div className="absolute left-1/2 bottom-0 h-[0.4rem] w-[100%] bg-[#2563eb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-1/2"></div>
         </h1>
-        <div className="absolute left-[30%] bottom-0 h-[0.4rem] w-[40%] bg-[#2563eb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
       </div>
     </>
   );
