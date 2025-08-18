@@ -8,7 +8,7 @@ const imageData = [
     explaination: "An app to learn the basics of React",
     photoName: "Screenshot-1.png",
     i: -1,
-    skills: "https://skillicons.dev/icons?i=git,react,tailwind,vite",
+    img: "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
   },
   {
     name: "Portfolio",
@@ -24,6 +24,104 @@ const imageData = [
     photoName: "Screenshot-2.png",
     i: 1,
     skills: "https://skillicons.dev/icons?i=html,css,git,javascript",
+  },
+];
+const itemData = [
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
+  },
+  {
+    name: "Stylish Sneakers",
+    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    photoName:
+      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    price: 129.99,
+    i: -1,
   },
 ];
 function App() {
@@ -225,12 +323,59 @@ function Image({ ImageInfo, index, imgIndex }) {
     </>
   );
 }
+
 function CommerceSection() {
   return (
     <>
       <section className="section__commerce mt-[24rem]">
-        <HeroHeading content="COMMERCE"></HeroHeading>
+        <HeroHeading content="E-COMMERCE"></HeroHeading>
+        <ul className="commerce__list grid grid-cols-4 gap-4 items-center justify-center">
+          {itemData.map((item) => {
+            return (
+              <ItemRender
+                key={item.name}
+                itemHeading={item.name}
+                itemInfo={item.explaination}
+                itemPrice={item.price}
+                itemImg={item.photoName}
+              />
+            );
+          })}
+        </ul>
       </section>
+    </>
+  );
+}
+function ItemRender({ itemHeading, itemInfo, itemPrice, itemImg }) {
+  return (
+    <>
+      {" "}
+      <div className="commerce__card scale-100 mt-[3.2rem] hover:cursor-pointer max-w-lg mx-auto bg-[#1a1a1a] rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+        <img
+          src={itemImg}
+          alt="Product"
+          className="w-[200%] h-[18rem] object-contain bg-[#1a1a1a]"
+        />
+        <div className="p-6">
+          <h3 className="text-[3.6rem] font-semibold mb-2 text-[#d6f8df]">
+            {itemHeading}
+          </h3>
+          <p className="text-[1.2rem] text-gray-300 mb-4">{itemInfo}</p>
+
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-lg font-bold text-[#b3f975]">
+              {itemPrice}
+            </span>
+            <span className="text-sm bg-[#08aa38] text-black px-2 py-1 rounded-full">
+              In Stock
+            </span>
+          </div>
+
+          <button className="w-full bg-[#08aa38] hover:bg-[#0c8a2e] text-black font-semibold py-2 rounded-md transition-colors">
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </>
   );
 }
