@@ -27,101 +27,93 @@ const imageData = [
   },
 ];
 const itemData = [
+  // Electronics
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
+    name: "Wireless Earbuds",
+    explaination:
+      "Compact earbuds with crystal-clear sound and touch controls.",
+    photoName: "black-01-solobuds-removebg-preview.png",
+    price: 99.99,
     i: -1,
+    category: "Electronics",
   },
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
+    name: "  Speaker",
+    explaination:
+      "Rugged, waterproof speaker with powerful bass for outdoor adventures.",
+    photoName: "loudspeaker-icon-big-horn-speaker-removebg-preview.png",
+    price: 79.99,
     i: -1,
+    category: "Electronics",
   },
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
+    name: "Smartwatch Pro",
+    explaination:
+      "Tracks fitness, notifications, and heart rate with a sleek display.",
+    photoName: "images-removebg-preview (1).png",
+    price: 199.99,
     i: -1,
+    category: "Electronics",
+  },
+
+  // Fitness
+  {
+    name: " Dumbbells",
+    explaination:
+      "Space-saving dumbbells with adjustable weights for versatile workouts.",
+    photoName: "RHD-removebg-preview.png",
+    price: 149.99,
+    i: -1,
+    category: "Fitness",
   },
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
+    name: "Yoga Mat ",
+    explaination:
+      "Non-slip, cushioned mat perfect for yoga, pilates, and stretching.",
+    photoName: "images-removebg-preview (2).png",
+    price: 39.99,
     i: -1,
+    category: "Fitness",
   },
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    name: "Resistance Bands ",
+    explaination:
+      "Set of bands for strength training, flexibility, and rehab exercises.",
     photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
+      "pngtree-resistance-bands-isolated-on-transparent-background-png-image_15807136.png",
+    price: 29.99,
     i: -1,
+    category: "Fitness",
+  },
+
+  // Home
+  {
+    name: "LED Desk Lamp",
+    explaination:
+      "Adjustable desk lamp with touch controls and color temperature options.",
+    photoName: "pngtree-led-desk-lamp-png-image_13215927.png",
+    price: 59.99,
+    i: -1,
+    category: "Home",
   },
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    name: "Air Purifier ",
+    explaination:
+      "Removes dust, allergens, and odors from small rooms efficiently.",
+    photoName: "pngtree-levoit-air-purifiers-for-home-png-image_12545738.png",
     price: 129.99,
     i: -1,
+    category: "Home",
   },
   {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
+    name: " Coffee Maker",
+    explaination:
+      "Brew fresh coffee anywhere with this compact, travel-friendly machine.",
     photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
+      "Coffeemaker-isolated-on-transparent-background-PNG-removebg-preview.png",
+    price: 89.99,
     i: -1,
-  },
-  {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
-    i: -1,
-  },
-  {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
-    i: -1,
-  },
-  {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
-    i: -1,
-  },
-  {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
-    i: -1,
-  },
-  {
-    name: "Stylish Sneakers",
-    explaination: "Foamy Sneakers Built to Resist Anything and Everything",
-    photoName:
-      "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
-    price: 129.99,
-    i: -1,
+    category: "Home",
   },
 ];
 function App() {
@@ -325,12 +317,46 @@ function Image({ ImageInfo, index, imgIndex }) {
 }
 
 function CommerceSection() {
+  const [filteredItems, setFilteredItems] = useState(itemData);
+  function filterCategory(category) {
+    const updatedItems = itemData.filter((item) => item.category === category);
+    setFilteredItems(updatedItems);
+    if (category === "All") {
+      setFilteredItems(itemData);
+    }
+  }
   return (
     <>
       <section className="section__commerce mt-[24rem]">
-        <HeroHeading content="E-COMMERCE"></HeroHeading>
+        <HeroHeading content="FILTER"></HeroHeading>
+        <div className="filter__btns flex items-center justify-center gap-[12.8rem] m-[6.4rem]">
+          <button
+            onClick={() => filterCategory("Electronics")}
+            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df]  hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+          >
+            Electronics
+          </button>
+          <button
+            onClick={() => filterCategory("Fitness")}
+            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df] hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+          >
+            Fitness
+          </button>
+          <button
+            onClick={() => filterCategory("Home")}
+            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df] hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+          >
+            Home
+          </button>
+          <button
+            onClick={() => filterCategory("All")}
+            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df] hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+          >
+            All
+          </button>
+        </div>
         <ul className="commerce__list grid grid-cols-4 gap-4 items-center justify-center">
-          {itemData.map((item) => {
+          {filteredItems.map((item) => {
             return (
               <ItemRender
                 key={item.name}
