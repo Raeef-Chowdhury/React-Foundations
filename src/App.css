@@ -27,7 +27,7 @@ html {
   }
 }
 body {
-  padding-bottom: 96rem;
+  padding-bottom: 6rem;
   overflow-x: hidden;
 }
 @media (prefers-reduced-motion: no-preference) {

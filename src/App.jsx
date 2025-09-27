@@ -123,6 +123,7 @@ function App() {
       <ImageSection />
       <CommerceSection />
       <ReviewSection />
+      <FooterSection />
     </>
   );
 }
@@ -463,9 +464,9 @@ function ReviewSection() {
     setReview("");
   };
   return (
-    <section className="section__review mt-[6rem]  flex items-center justify-center flex-col gap-[12rem]">
+    <section className="section__review mt-[12rem]  flex items-center justify-center flex-col gap-[12rem]">
       <HeroHeading content="REVIEW" />
-      <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md scale-[2] mt-[8rem]">
+      <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md scale-[2] mt-[2.4rem]">
         <div className="flex gap-2 mb-4 justify-center">
           {[...Array(5)].map((_, index) => {
             const starValue = index + 1;
@@ -505,6 +506,15 @@ function ReviewSection() {
         </form>
       </div>
     </section>
+  );
+}
+function FooterSection() {
+  return (
+    <footer className="mt-[24rem] flex justify-center items-center border-t-4 border-gray-900 ">
+      <p className="text-white text-[3.2rem] mt-[2.4rem]">
+        @2025 Raeef Chowdhury
+      </p>
+    </footer>
   );
 }
 export default App;
