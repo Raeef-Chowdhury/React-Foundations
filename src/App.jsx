@@ -318,43 +318,68 @@ function Image({ ImageInfo, index, imgIndex }) {
 
 function CommerceSection() {
   const [filteredItems, setFilteredItems] = useState(itemData);
+  const [activeBtn, setActiveBtn] = useState("All"); // default: All
+
   function filterCategory(category) {
-    const updatedItems = itemData.filter((item) => item.category === category);
-    setFilteredItems(updatedItems);
     if (category === "All") {
       setFilteredItems(itemData);
+    } else {
+      const updatedItems = itemData.filter(
+        (item) => item.category === category
+      );
+      setFilteredItems(updatedItems);
     }
+    setActiveBtn(category); // set currently active button
   }
+
+  // helper: dynamic button style
+  function getBtnClasses(category) {
+    return `
+      filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] 
+      text-[1.6rem] uppercase scale-150 transform transition-all duration-500 cursor-pointer
+      ${
+        activeBtn === category
+          ? "bg-blue-800 text-white"
+          : "bg-[#d6f8df] text-black hover:bg-blue-800 hover:text-white"
+      }
+    `;
+  }
+
   return (
     <>
       <section className="section__commerce mt-[24rem]">
-        <HeroHeading content="FILTER"></HeroHeading>
+        <HeroHeading content="FILTER" />
+
         <div className="filter__btns flex items-center justify-center gap-[12.8rem] m-[6.4rem]">
           <button
             onClick={() => filterCategory("Electronics")}
-            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df]  hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+            className={getBtnClasses("Electronics")}
           >
             Electronics
           </button>
+
           <button
             onClick={() => filterCategory("Fitness")}
-            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df] hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+            className={getBtnClasses("Fitness")}
           >
             Fitness
           </button>
+
           <button
             onClick={() => filterCategory("Home")}
-            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df] hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+            className={getBtnClasses("Home")}
           >
             Home
           </button>
+
           <button
             onClick={() => filterCategory("All")}
-            className="filter__btn border-2 border-blue-800 rounded-2xl px-[2.4rem] py-[0.8rem] text-black text-[1.6rem] bg-[#d6f8df] hover:bg-blue-800 hover:text-white  transition-all duration-500 cursor-pointer  scale-150 transform uppercase"
+            className={getBtnClasses("All")}
           >
             All
           </button>
         </div>
+
         <ul className="commerce__list grid grid-cols-4 gap-4 items-center justify-center">
           {filteredItems.map((item) => {
             return (
@@ -374,7 +399,13 @@ function CommerceSection() {
 }
 function ItemRender({ itemHeading, itemInfo, itemPrice, itemImg }) {
   return (
-    <>
+    <motion.li
+      initial={{ opacity: 0, y: 40, scale: 0 }} // start invisible & shifted down
+      animate={{ opacity: 1, y: 0, scale: 1 }} // fade & slide into place
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      whileHover={{ scale: 1.05 }} // hover effect
+      className="list-none"
+    >
       {" "}
       <div className="commerce__card scale-100 mt-[3.2rem] hover:cursor-pointer max-w-lg mx-auto bg-[#1a1a1a] rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
         <img
@@ -402,7 +433,7 @@ function ItemRender({ itemHeading, itemInfo, itemPrice, itemImg }) {
           </button>
         </div>
       </div>
-    </>
+    </motion.li>
   );
 }
 function HeroHeading(props) {
@@ -414,6 +445,13 @@ function HeroHeading(props) {
           <div className="absolute left-1/2 bottom-0 h-[0.4rem] w-[100%] bg-[#2563eb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-1/2"></div>
         </h1>
       </div>
+    </>
+  );
+}
+function sectionReview() {
+  return (
+    <>
+      <HeroHeading content="HOW DID YOU LIKE THIS?"></HeroHeading>
     </>
   );
 }
