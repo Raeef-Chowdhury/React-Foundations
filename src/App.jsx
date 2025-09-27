@@ -122,6 +122,7 @@ function App() {
       <HeroSection />
       <ImageSection />
       <CommerceSection />
+      <ReviewSection />
     </>
   );
 }
@@ -133,7 +134,7 @@ function HeroSection() {
     <>
       <Navbar />
       <section className="section__hero mt-[9.6rem] h-[70vh] ">
-        <div className="hero__textbox flex justify-start items-center flex-col gap-[6.4rem]">
+        <div className="hero__textbox flex justify-start mt-[12rem] items-center flex-col gap-[6.4rem]">
           <motion.h1
             initial={{ x: -1600, blur: ["5px"], opacity: 0 }}
             animate={{ x: 0, blur: ["0px"], opacity: 1 }}
@@ -165,7 +166,7 @@ function HeroSection() {
             initial={{ scale: 0, blur: ["5px"], opacity: 0 }}
             animate={{ scale: 1, blur: ["0px"], opacity: 1 }}
             transition={{ type: "tween", duration: 0.8, ease: "easeIn" }}
-            className="hero__button text-[2.4rem] px-[2.4em] py-[0.6em] rounded-4xl text-[#2563eb] bg-[#d6f8df] transition-all hover:scale-125 hover:translate-y-[-2rem] hover:cursor-pointer overflow-hidden relative"
+            className="hero__button mt-[8rem] text-[2.4rem] px-[2.4em] py-[0.6em] rounded-4xl text-[#2563eb] bg-[#d6f8df] transition-all hover:scale-125 hover:translate-y-[-2rem] hover:cursor-pointer overflow-hidden relative"
           >
             SEE MORE
           </motion.button>
@@ -448,11 +449,62 @@ function HeroHeading(props) {
     </>
   );
 }
-function sectionReview() {
+
+function ReviewSection() {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [review, setReview] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Rating:", rating);
+    console.log("Review:", review);
+    setRating(0);
+    setReview("");
+  };
   return (
-    <>
-      <HeroHeading content="HOW DID YOU LIKE THIS?"></HeroHeading>
-    </>
+    <section className="section__review mt-[6rem]  flex items-center justify-center flex-col gap-[12rem]">
+      <HeroHeading content="REVIEW" />
+      <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md scale-[2] mt-[8rem]">
+        <div className="flex gap-2 mb-4 justify-center">
+          {[...Array(5)].map((_, index) => {
+            const starValue = index + 1;
+            return (
+              <span
+                key={index}
+                className={`cursor-pointer text-3xl transition-colors duration-200 ${
+                  starValue <= (hover || rating)
+                    ? "text-yellow-400"
+                    : "text-gray-600 hover:text-blue-400"
+                }`}
+                onClick={() => setRating(starValue)}
+                onMouseEnter={() => setHover(starValue)}
+                onMouseLeave={() => setHover(0)}
+              >
+                ★
+              </span>
+            );
+          })}
+        </div>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <textarea
+            className="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-gray-100"
+            placeholder="Write your review here..."
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            rows={4}
+          />
+
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-xl shadow-md transition duration-200"
+          >
+            Submit Review
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }
 export default App;
