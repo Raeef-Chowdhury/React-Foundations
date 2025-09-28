@@ -1,3 +1,4 @@
+// Polish animations, create 4 100s on lighthouse
 /* eslint-disable react/prop-types */
 import { useState, createRef } from "react";
 import "./App.css";
@@ -158,7 +159,6 @@ function HeroSection() {
             transition={{ type: "tween", duration: 0.8, ease: "easeOut" }}
             className="hero__info text-[#d6f8df] text-[2.4rem] max-w-[60vw] tracking-[0.3rem]"
           >
-            {" "}
             This is a simple app of basic projects that will help me solidify my
             basics. Above was the first project, a conditional statment changing
             depending on the time of day.
@@ -319,6 +319,8 @@ function Image({ ImageInfo, index, imgIndex }) {
 }
 
 function CommerceSection() {
+  const ref = createRef();
+  const isInView = useInView(ref, { threshold: 21 });
   const [filteredItems, setFilteredItems] = useState(itemData);
   const [activeBtn, setActiveBtn] = useState("All"); // default: All
 
@@ -349,7 +351,12 @@ function CommerceSection() {
 
   return (
     <>
-      <section className="section__commerce mt-[24rem]">
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0, y: 100 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        className="section__commerce mt-[24rem] "
+      >
         <HeroHeading content="FILTER" />
 
         <div className="filter__btns flex items-center justify-center gap-[12.8rem] m-[6.4rem]">
@@ -395,7 +402,7 @@ function CommerceSection() {
             );
           })}
         </ul>
-      </section>
+      </motion.section>
     </>
   );
 }
@@ -456,6 +463,9 @@ function ReviewSection() {
   const [hover, setHover] = useState(0);
   const [review, setReview] = useState("");
 
+  const ref = createRef();
+  const isInView = useInView(ref, { threshold: 21 });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Rating:", rating);
@@ -464,7 +474,12 @@ function ReviewSection() {
     setReview("");
   };
   return (
-    <section className="section__review mt-[12rem]  flex items-center justify-center flex-col gap-[12rem]">
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 100 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+      className="section__review mt-[12rem]  flex items-center justify-center flex-col gap-[12rem]"
+    >
       <HeroHeading content="REVIEW" />
       <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md scale-[2] mt-[2.4rem]">
         <div className="flex gap-2 mb-4 justify-center">
@@ -505,13 +520,13 @@ function ReviewSection() {
           </button>
         </form>
       </div>
-    </section>
+    </motion.section>
   );
 }
 function FooterSection() {
   return (
     <footer className="mt-[24rem] flex justify-center items-center border-t-4 border-gray-900 ">
-      <p className="text-white text-[3.2rem] mt-[2.4rem]">
+      <p className="text-white text-[3.2rem] mt-[2.4rem] ">
         @2025 Raeef Chowdhury
       </p>
     </footer>
