@@ -9,7 +9,9 @@ const imageData = [
     explaination: "An app to learn the basics of React",
     photoName: "Screenshot-1.png",
     i: -1,
-    img: "pngtree-clean-minimalist-white-leather-sneaker-shoe-png-image_16577215-removebg-preview.png",
+    alt: "react foundations project",
+
+    skills: "https://skillicons.dev/icons?i=html,css,git,tailwind,vite,react",
   },
   {
     name: "Portfolio",
@@ -17,6 +19,8 @@ const imageData = [
     photoName: "Screenshot-3.png",
     i: 0,
     skills: "https://skillicons.dev/icons?i=html,css,git,javascript,tailwind",
+
+    alt: "portfolio project",
   },
   {
     name: "Mother + Son Dining",
@@ -25,6 +29,8 @@ const imageData = [
     photoName: "Screenshot-2.png",
     i: 1,
     skills: "https://skillicons.dev/icons?i=html,css,git,javascript",
+
+    alt: "restaurant project",
   },
 ];
 const itemData = [
@@ -37,6 +43,7 @@ const itemData = [
     price: 99.99,
     i: -1,
     category: "Electronics",
+    alt: "black earbuds",
   },
   {
     name: "  Speaker",
@@ -46,6 +53,7 @@ const itemData = [
     price: 79.99,
     i: -1,
     category: "Electronics",
+    alt: "speaker",
   },
   {
     name: "Smartwatch Pro",
@@ -55,6 +63,7 @@ const itemData = [
     price: 199.99,
     i: -1,
     category: "Electronics",
+    alt: "smartwatch",
   },
 
   // Fitness
@@ -66,6 +75,7 @@ const itemData = [
     price: 149.99,
     i: -1,
     category: "Fitness",
+    alt: "dumbbells",
   },
   {
     name: "Yoga Mat ",
@@ -75,6 +85,7 @@ const itemData = [
     price: 39.99,
     i: -1,
     category: "Fitness",
+    alt: "yoga mat",
   },
   {
     name: "Resistance Bands ",
@@ -85,6 +96,7 @@ const itemData = [
     price: 29.99,
     i: -1,
     category: "Fitness",
+    alt: "resistance bands",
   },
 
   // Home
@@ -96,6 +108,7 @@ const itemData = [
     price: 59.99,
     i: -1,
     category: "Home",
+    alt: "led desk lamp",
   },
   {
     name: "Air Purifier ",
@@ -105,6 +118,7 @@ const itemData = [
     price: 129.99,
     i: -1,
     category: "Home",
+    alt: "air purifier",
   },
   {
     name: " Coffee Maker",
@@ -115,6 +129,7 @@ const itemData = [
     price: 89.99,
     i: -1,
     category: "Home",
+    alt: "coffee maker",
   },
 ];
 function App() {
@@ -287,6 +302,7 @@ function ImageSection() {
   );
 }
 function Image({ ImageInfo, index, imgIndex }) {
+  console.log(ImageInfo.alt);
   return (
     <>
       <motion.li
@@ -298,6 +314,7 @@ function Image({ ImageInfo, index, imgIndex }) {
       >
         <img
           src={ImageInfo.photoName}
+          alt={ImageInfo.alt}
           className="group-hover:blur-xl group-hover:brightness-60 transition-all duration-500 w-full h-full object-cover"
         />
         <div className="image__information flex flex-col items-center ">
@@ -398,6 +415,7 @@ function CommerceSection() {
                 itemInfo={item.explaination}
                 itemPrice={item.price}
                 itemImg={item.photoName}
+                itemAlt={item.alt}
               />
             );
           })}
@@ -406,7 +424,7 @@ function CommerceSection() {
     </>
   );
 }
-function ItemRender({ itemHeading, itemInfo, itemPrice, itemImg }) {
+function ItemRender({ itemHeading, itemInfo, itemPrice, itemImg, itemAlt }) {
   return (
     <motion.li
       initial={{ opacity: 0, y: 40, scale: 0 }} // start invisible & shifted down
@@ -419,7 +437,7 @@ function ItemRender({ itemHeading, itemInfo, itemPrice, itemImg }) {
       <div className="commerce__card scale-100 mt-[3.2rem] hover:cursor-pointer max-w-lg mx-auto bg-[#1a1a1a] rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
         <img
           src={itemImg}
-          alt="Product"
+          alt={itemAlt}
           className="w-[200%] h-[18rem] object-contain bg-[#1a1a1a]"
         />
         <div className="p-6">
