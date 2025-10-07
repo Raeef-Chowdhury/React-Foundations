@@ -3,7 +3,7 @@
 A collection of small-to-medium **React.js** projects designed to strengthen and refine my understanding of **frontend development** using **React**, **Tailwind CSS**, and **modern JavaScript (ES6)**.  
 Live Demo: [React Foundations](https://reactfoundations.netlify.app)
 
-![Screenshot of React Foundations](https://github.com/Raeef-Chowdhury/React-Foundations/blob/master/preview.png?raw=tru)
+![Screenshot of React Foundations](https://github.com/Raeef-Chowdhury/React-Foundations/blob/main/public/Screenshot-1.png?raw=true)
 ---
 
 ## 🌟 Overview
